@@ -44,6 +44,14 @@ class Mastermind:
 
             print("Choose 1, 2, or 3.")
 
+    def _show_history(self):
+        print("History:")
+        for i, (guess, exact, partial) in enumerate(self.history, start=1):
+            print(
+                f"{i}. Guess: {guess} | "
+                f"Exact: {exact} | Partial: {partial}"
+            )
+
     def run(self):
         if self.game_over:
             return
@@ -81,6 +89,7 @@ class Mastermind:
             self.turns -= 1
 
             print("Exact:", exact, " Partial:", partial)
+            self._show_history()
 
             if exact == self.code_length:
                 self.game_over = True
